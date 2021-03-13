@@ -83,31 +83,31 @@ abline(v=r[which(e.sfs$obs>e.sfs$lo)[1]],col="green3",lty=2)
 text(r[which(e.sfs$obs>e.sfs$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
 plot(l.sfs, . - mmean ~ r,main="Cross L",legend=F,xlab="r (in km)",xlim=c(0,500))
 abline(v=r[which(l.sfs$obs>l.sfs$lo)[1]],col="green3",lty=2)
-text(r[which(l.sfs$obs>l.sfs$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
+text(r[which(l.sfs$obs>l.sfs$lo)[1]],0,paste0("r=",r[which(l.sfs$obs>l.sfs$lo)[1]]))
 
 plot(e.ap, . - mmean ~ r,main="Cross K",legend=F,xlab="r (in km)",xlim=c(0,500))
 abline(v=r[which(e.ap$obs>e.ap$lo)[1]],col="green3",lty=2)
-text(r[which(e.ap$obs>e.ap$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
+text(r[which(e.ap$obs>e.ap$lo)[1]],0,paste0("r=",r[which(e.ap$obs>e.ap$lo)[1]]))
 plot(l.ap, . - mmean ~ r,main="Cross L",legend=F,xlab="r (in km)",xlim=c(0,500))
 abline(v=r[which(l.ap$obs>l.ap$lo)[1]],col="green3",lty=2)
-text(r[which(l.ap$obs>l.ap$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
+text(r[which(l.ap$obs>l.ap$lo)[1]],0,paste0("r=",r[which(l.ap$obs>l.ap$lo)[1]]))
 
 
 
 plot(e.mil, . - mmean ~ r,main="Cross K",legend=F,xlab="r (in km)",xlim=c(0,500))
 abline(v=r[which(e.mil$obs>e.mil$lo)[1]],col="green3",lty=2)
-text(r[which(e.mil$obs>e.mil$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
+text(r[which(e.mil$obs>e.mil$lo)[1]],0,paste0("r=",r[which(e.mil$obs>e.mil$lo)[1]]))
 plot(l.mil, . - mmean ~ r,main="Cross L",legend=F,xlab="r (in km)",xlim=c(0,500))
 abline(v=r[which(l.mil$obs>l.mil$lo)[1]],col="green3",lty=2)
-text(r[which(l.mil$obs>l.mil$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
+text(r[which(l.mil$obs>l.mil$lo)[1]],0,paste0("r=",r[which(l.mil$obs>l.mil$lo)[1]]))
 
 
 plot(e.tri, . - mmean ~ r,main="Cross K",legend=F,xlab="r (in km)",xlim=c(0,500))
 abline(v=r[which(e.tri$obs>e.tri$lo)[1]],col="green3",lty=2)
-text(r[which(e.tri$obs>e.tri$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
+text(r[which(e.tri$obs>e.tri$lo)[1]],0,paste0("r=",r[which(e.tri$obs>e.tri$lo)[1]]))
 plot(l.tri, . - mmean ~ r,main="Cross L",legend=F,xlab="r (in km)",xlim=c(0,500))
 abline(v=r[which(l.tri$obs>l.tri$lo)[1]],col="green3",lty=2)
-text(r[which(l.tri$obs>l.tri$lo)[1]],0,paste0("r=",r[which(e.sfs$obs>e.sfs$lo)[1]]))
+text(r[which(l.tri$obs>l.tri$lo)[1]],0,paste0("r=",r[which(l.tri$obs>l.tri$lo)[1]]))
 
 
 
