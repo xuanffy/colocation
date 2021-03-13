@@ -60,7 +60,7 @@ load("CLQ_simulated_nhb=1.RData")
 simulated_CLQ <- r
 
 sites <- c("pb", "ap", "mil", "sfs", "tri")
-if (TRUE) {
+if (FALSE) {
   load("CA_sites_pair.RData")
   observed_CLQ <- data.frame( row.names = sites,
                               "pb" = rep(-1, 5),
@@ -73,27 +73,44 @@ if (TRUE) {
       observed_CLQ[i,j] <- CLQ_a_b(sites[i], sites[j], n, seq(1, n), nhb = 1)
     }
   }
-  save(observed_CLQ, file = "observed_CLQ.RData")
+  save(observed_CLQ, file = "observed_CLQ_n=1.RData")
 }
 
-load("observed_CLQ.RData")
-global_observed_CLQ <- sum(diag(as.matrix(observed_CLQ))) / sum( (sites_info[,1]-1)*(sites_info[,1]) / (n-1) )
+load("observed_CLQ_n=1.RData")
 
 
+# print("M1")
+gamma <- 0.001
 for (i in seq(1,5)) {
   for (j in seq(1,5)) {
     if (i != j) {
-      q <- quantile(simulated_CLQ[,(i-1)*5+j], probs = c(0.025, 0.0975))
-      print( paste( "results:", observed_CLQ[i,j] >= q[2], ",",
-                    sites[i],"->",sites[j],"=", observed_CLQ[i,j], 
-                    ", 2.5% =", q[1], ", 97.5% =", q[2]) )
+      sim <- simulated_CLQ[,(i-1)*5+j]
+      p <- 2 * min(sum(sim >= observed_CLQ[i,j]),sum(sim <= observed_CLQ[i,j])) / nrow(simulated_CLQ)
+      print( paste( "M1 - results:", p <= gamma, sites[i],"->",sites[j], "," , "p = ", p) )
     }
   }
 }
 
-q <- quantile(simulated_CLQ[,26], probs = c(0.025, 0.0975))
-print( paste( "results:", global_observed_CLQ >= q[2], ",",
-              sites[i],"->",sites[j],"=", global_observed_CLQ , 
-              ", 2.5% =", q[1], ", 97.5% =", q[2]) )
+print("================================")
+# print("M2")
+for (i in seq(1,5)) {
+  for (j in seq(1,5)) {
+    if (i != j) {
+      q <- quantile(simulated_CLQ[,(i-1)*5+j], probs = c(0.000, 0.95))
+      print( paste( "M2 - results:", observed_CLQ[i,j] >= q[2], ",",
+                    sites[i],"->",sites[j],"=", observed_CLQ[i,j], 
+                    ", min =", q[1], ", 95% =", q[2]) )
+    }
+  }
+}
+
+
+
+
+# global_observed_CLQ <- sum(diag(as.matrix(observed_CLQ))) / sum( (sites_info[,1]-1)*(sites_info[,1]) / (n-1) )
+# q <- quantile(simulated_CLQ[,26], probs = c(0.025, 0.0975))
+# print( paste( "results:", global_observed_CLQ >= q[2], ",",
+#               sites[i],"->",sites[j],"=", global_observed_CLQ , 
+#               ", 2.5% =", q[1], ", 97.5% =", q[2]) )
 
 
